@@ -1,25 +1,25 @@
 version: 2.1
-  orbs:
-    terraform: circleci/terraform@1.0.2
-  jobs:
-    single-job-lifecycle:
-      executor: terraform/default
-      working_directory: "~/ec2"
-      steps:
-        - checkout
-        - terraform/init:
-            path: "."
-        - terraform/validate:
-            path: "."
-        - terraform/fmt:
-            path: "."
-        - terraform/plan:
-            path: "."
-        - terraform/apply:
-            path: "."
-        - terraform/destroy:
-            path: "."
-  workflows:
-    single-job-lifecycle:
-      jobs:
-        - single-job-lifecycle
+orbs:
+  terraform: circleci/terraform@1.0.2
+jobs:
+  single-job-lifecycle:
+    executor: terraform/default
+    working_directory: "~/ec2"
+    steps:
+      - checkout
+      - terraform/init:
+          path: "."
+      - terraform/validate:
+          path: "."
+      - terraform/fmt:
+          path: "."
+      - terraform/plan:
+          path: "."
+      - terraform/apply:
+          path: "."
+      - terraform/destroy:
+          path: "."
+workflows:
+  single-job-lifecycle:
+    jobs:
+      - single-job-lifecycle
