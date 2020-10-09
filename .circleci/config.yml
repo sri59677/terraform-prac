@@ -16,4 +16,4 @@ workflows:
           path: ec2
           filters:
             branches:
-              only: main
+              ignore: main
