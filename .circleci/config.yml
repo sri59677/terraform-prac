@@ -9,7 +9,7 @@
         
         - terraform/fmt:
             checkout: true
-            context: ec2
+            context: terraform
         - terraform/validate:
             checkout: true
             context: terraform
