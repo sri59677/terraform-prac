@@ -1,19 +1,25 @@
 version: 2.1
-
-orbs:
-  terraform: ovotech/terraform@1.6
-
-workflows:
-  test:
-    jobs:
-      - terraform/plan:
-          path: ec2
-          filters:
-            branches:
-              ignore: main
-
-      - terraform/apply:
-          path: ec2
-          filters:
-            branches:
-              only: main
+  orbs:
+    terraform: circleci/terraform@1.0.2
+  jobs:
+    single-job-lifecycle:
+      executor: terraform/default
+      working_directory: "~/ec2"
+      steps:
+        - checkout
+        - terraform/init:
+            path: "."
+        - terraform/validate:
+            path: "."
+        - terraform/fmt:
+            path: "."
+        - terraform/plan:
+            path: "."
+        - terraform/apply:
+            path: "."
+        - terraform/destroy:
+            path: "."
+  workflows:
+    single-job-lifecycle:
+      jobs:
+        - single-job-lifecycle
