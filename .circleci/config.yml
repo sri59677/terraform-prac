@@ -5,12 +5,11 @@
     deploy_infrastructure:
       
       jobs:
-        executor: terraform/default
-        working_directory: "~/ec2"
+        
         
         - terraform/fmt:
             checkout: true
-            context: terraform
+            context: ec2
         - terraform/validate:
             checkout: true
             context: terraform
