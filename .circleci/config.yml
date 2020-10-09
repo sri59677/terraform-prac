@@ -1,0 +1,19 @@
+version: 2.1
+
+orbs:
+  terraform: ovotech/terraform@1.6
+
+workflows:
+  test:
+    jobs:
+      - terraform/plan:
+          path: ec2
+          filters:
+            branches:
+              ignore: main
+
+      - terraform/apply:
+          path: ec2
+          filters:
+            branches:
+              ignore: main
