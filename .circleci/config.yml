@@ -8,17 +8,17 @@ jobs:
     steps:
       - checkout
       - terraform/init:
-          path: "."
+          path: "ec2"
       - terraform/validate:
-          path: "."
+          path: "ec2"
       - terraform/fmt:
-          path: "."
+          path: "ec2"
       - terraform/plan:
-          path: "."
+          path: "ec2"
       - terraform/apply:
-          path: "."
+          path: "ec2"
       - terraform/destroy:
-          path: "."
+          path: "ec2"
 workflows:
   single-job-lifecycle:
     jobs:
