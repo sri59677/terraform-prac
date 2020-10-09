@@ -3,9 +3,10 @@
     terraform: circleci/terraform@1.0.2
   workflows:
     deploy_infrastructure:
-      executor: terraform/default
-      working_directory: "~/ec2"
+      
       jobs:
+        executor: terraform/default
+        working_directory: "~/ec2"
         
         - terraform/fmt:
             checkout: true
