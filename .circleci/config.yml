@@ -1,29 +1,19 @@
-version: '2.1'
+version: 2.1
+
 orbs:
-  terraform: circleci/terraform@1.0.2
+  terraform: ovotech/terraform@1.6
 
 workflows:
-  deploy_infrastructure:
+  test:
     jobs:
-      - terraform/fmt:
-          checkout: true
-          context: terraform
-      - terraform/validate:
-          checkout: true
-          context: terraform
-          requires:
-            - terraform/fmt
       - terraform/plan:
-          checkout: true
-          context: terraform
-          persist-workspace: true
-          requires:
-            - terraform/validate
+          path: ec2
+          filters:
+            branches:
+              ignore: main
+
       - terraform/apply:
-          attach-workspace: true
-          context: terraform
-          
-           
-              
-          requires:
-            - terraform/plan
+          path: tf
+          filters:
+            branches:
+              only: main
