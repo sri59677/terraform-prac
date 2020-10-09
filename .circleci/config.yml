@@ -9,8 +9,6 @@ jobs:
       - checkout
       - terraform/init:
           path: "ec2"
-      - terraform/validate:
-          path: "ec2"
       - terraform/fmt:
           path: "ec2"
       - terraform/plan:
