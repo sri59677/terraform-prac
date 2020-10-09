@@ -1,16 +1,7 @@
 version: '2.1'
 orbs:
   terraform: 'circleci/terraform@1.0.2'
-jobs:
-  executor: terraform/default
-  steps:
-   - checkout
-   - terraform/init:
-       path: "ec2"
-       #checkout: true
-   - terraform/fmt:
-       path: "ec2"
-       #checkout: true
+
 workflows:
   deploy_infrastructure:
     jobs:
