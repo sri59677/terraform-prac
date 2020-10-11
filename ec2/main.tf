@@ -2,6 +2,14 @@ provider "aws"  {
  region = "eu-west-2"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "terraform-backend-5960"
+    key = "terraform/ec2"
+    region = "eu-west-2"
+  }
+}
+
 resource "aws_security_group" "examplesg" {
   ingress {
     from_port = 22
