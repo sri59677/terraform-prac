@@ -1,0 +1,24 @@
+version: 2.1
+orbs:
+  terraform: circleci/terraform@1.0.2
+jobs:
+  destroy-job-lifecycle:
+    executor: terraform/default
+    working_directory: "~/ec2"
+    steps:
+      - checkout
+      - terraform/init:
+          path: "ec2"
+      - terraform/validate:
+            path: "ec2"
+      
+      - terraform/plan:
+          path: "ec2"
+      
+      - terraform/destroy:
+          path: "ec2"
+      
+workflows:
+  destroy-job-lifecycle:
+    jobs:
+      - destroy-job-lifecycle
