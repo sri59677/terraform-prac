@@ -14,9 +14,9 @@ jobs:
       
       - terraform/plan:
           path: "ec2"
-      - terraform/apply:
-          path: "ec2"
       
+      - terraform/destroy:
+          path: "ec2"
       
 workflows:
   single-job-lifecycle:
