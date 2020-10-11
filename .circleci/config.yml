@@ -3,8 +3,9 @@ orbs:
   terraform: circleci/terraform@1.0.2
 workflows:
   deploy_infrastructure:
-  working_directory: "~/ec2"
+  
     jobs:
+      working_directory: "~/ec2"
       - terraform/fmt:
           checkout: true
           context: terraform
