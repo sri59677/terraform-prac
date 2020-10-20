@@ -29,3 +29,9 @@ jobs:
       run: |
         cd ec2
         terraform plan -out saved_plan
+        
+  
+    - name: Terraform Apply
+      run: |
+        cd ec2
+        terraform apply -auto-approve saved_plan 
